@@ -1,0 +1,24 @@
+- name: "Configure ranger"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+  - name: Basic configuration for ranger
+    ansible.builtin.blockinfile:
+      path: ~/.config/ranger/rc.conf
+      block: |
+        set show_hidden true
+        set confirm_on_delete yes
+
+        map DD shell gio trash %s
+        map di console mkdir%space
+        map N shell -dsp nautilus %d
+        map T shell -dsp terminal
+        map to console touch%space
+  - name: Kitty
+    ansible.builtin.blockinfile:
+      path: ~/.config/kitty/kitty.conf
+      block: |
+        cursor_blink_interval 0
+        enabled_layouts tall
+        # term xterm-kitty
+        term xterm-color

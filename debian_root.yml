@@ -1,0 +1,67 @@
+- name: "Configure debian settings system-wide"
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: "Systemd stop job 90s time limit"
+      lineinfile: dest=/etc/systemd/system.conf regexp='^(.*)DefaultTimeoutStopSec(.*)' line='DefaultTimeoutStopSec=90s' state=present backup=yes
+    - name: "Remove gnome games preinstalled"
+      ansible.builtin.apt:
+        name:
+        - iagno
+        - lightsoff
+        - four-in-a-row
+        - gnome-robots
+        - pegsolitaire
+        - gnome-2048
+        - hitori
+        - gnome-klotski
+        - gnome-mines
+        - gnome-mahjongg
+        - gnome-sudoku
+        - quadrapassel
+        - swell-foop
+        - gnome-tetravex
+        - gnome-taquin
+        - aislerio
+        state: absent
+    - name: "Install general utilities"
+      ansible.builtin.apt:
+        name:
+        - vlc
+        - flatpak
+        - gnome-software-plugin-flatpak
+        - epiphany-browser
+        - dosfstools
+        - mtools
+        - gparted
+        - deborphan
+        - pdftk
+        - borgbackup
+        - foliate
+        - calibre
+        - htop
+        - neofetch
+        state: present
+    - name: "Install programming utilities"
+      ansible.builtin.apt:
+        name:
+        - vim-gtk3
+        - git
+        - kitty
+        - ranger
+        - dconf-editor
+        - emacs
+        - python-is-python3
+        - python3-pip
+        - python3.11-venv
+        - ack
+        - fd-find
+        state: present
+    # This takes forever
+    # - name: "Install LaTeX and pandoc stuff"
+    #   ansible.builtin.apt:
+    #     name:
+    #     - texlive-full
+    #     - latexmk
+    #     - pandoc
+    #     state: present

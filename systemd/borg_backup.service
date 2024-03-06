@@ -1,0 +1,9 @@
+[Unit]
+Description=Makes backup with borg
+# %h means $HOME
+[Service]
+ExecStart=%h/scripts/backup/backup_borg.sh
+RemainAfterExit=true
+[Install]
+WantedBy=default.target
+
