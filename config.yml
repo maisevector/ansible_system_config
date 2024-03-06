@@ -22,3 +22,60 @@
         enabled_layouts tall
         # term xterm-kitty
         term xterm-color
+        include doom_vibrant.conf
+  - name: Kitty colorscheme
+    ansible.builtin.copy:
+      src: ./files/doom_vibrant.conf
+      dest: ~/.config/kitty/doom_vibrant.conf
+  - name: Git
+    ansible.builtin.blockinfile:
+      path: ~/.gitconfig
+      block: |
+        [user]
+            name = "Matthias Schaufelberger"
+            email = "schaufim@gmail.com"
+        [init]
+            defaultBranch = main
+        [commit]
+            verbose = true
+        [alias]
+            lola = log --all --oneline --graph
+        [push]
+            autoSetupRemote = true
+  - name: VSCodium
+    ansible.builtin.blockinfile:
+      path: ~/.config/VSCodium/User/settings.json 
+      block: |
+        {
+            "workbench.colorTheme": "Default Dark Modern",
+            "security.workspace.trust.untrustedFiles": "open",
+            "keyboard.dispatch": "keyCode",
+            "vim.gdefault": true,
+            "vim.history": 1000,
+            "vim.visualModeKeyBindings": [
+                {
+                    "before": [ "H" ],
+                    "after": [ "0" ]
+                },
+                {
+                    "before": [ "L" ],
+                    "after": [ "$" ]
+                }
+            ],
+            "vim.normalModeKeyBindings": [
+                {
+                    "before": [ "H" ],
+                    "after": [ "0" ]
+                },
+                {
+                    "before": [ "L" ],
+                    "after": [ "$" ]
+                }
+            ],
+            "vim.insertModeKeyBindings": [
+                {
+                  "before": ["j", "k"],
+                  "after": ["<Esc>"]
+                }
+            ],
+        }
