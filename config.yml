@@ -21,7 +21,7 @@
         cursor_blink_interval 0
         enabled_layouts tall
         # term xterm-kitty
-        term xterm-color
+        # term xterm-color
         include doom_vibrant.conf
   - name: Kitty colorscheme
     ansible.builtin.copy:
@@ -43,39 +43,15 @@
         [push]
             autoSetupRemote = true
   - name: VSCodium
-    ansible.builtin.blockinfile:
-      path: ~/.config/VSCodium/User/settings.json 
-      block: |
-        {
-            "workbench.colorTheme": "Default Dark Modern",
-            "security.workspace.trust.untrustedFiles": "open",
-            "keyboard.dispatch": "keyCode",
-            "vim.gdefault": true,
-            "vim.history": 1000,
-            "vim.visualModeKeyBindings": [
-                {
-                    "before": [ "H" ],
-                    "after": [ "0" ]
-                },
-                {
-                    "before": [ "L" ],
-                    "after": [ "$" ]
-                }
-            ],
-            "vim.normalModeKeyBindings": [
-                {
-                    "before": [ "H" ],
-                    "after": [ "0" ]
-                },
-                {
-                    "before": [ "L" ],
-                    "after": [ "$" ]
-                }
-            ],
-            "vim.insertModeKeyBindings": [
-                {
-                  "before": ["j", "k"],
-                  "after": ["<Esc>"]
-                }
-            ],
-        }
+    ansible.builtin.copy:
+      src: ./files/vs_codium_settings.json
+      dest: ~/.config/VSCodium/User/settings.json 
+      backup: yes
+  - name: "Sway config directory"
+    ansible.builtin.file:
+      path: ~/.config/sway
+      state: directory
+  - name: "Sway config directory"
+    ansible.builtin.copy:
+      src: ./files/sway_config
+      dest: ~/.config/sway/config

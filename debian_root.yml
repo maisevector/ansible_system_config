@@ -4,6 +4,10 @@
   tasks:
     - name: "Systemd stop job 90s time limit"
       lineinfile: dest=/etc/systemd/system.conf regexp='^(.*)DefaultTimeoutStopSec(.*)' line='DefaultTimeoutStopSec=90s' state=present backup=yes
+    - name: "Remove image magick security policy for eps"
+      lineinfile: dest=/etc/ImageMagick-6/policy.xml regexp='^(.*)<policy domain="coder" .* pattern="EPS" />' line='  <policy domain="coder" rights="read|write" pattern="EPS" />' state=present backup=yes
+    - name: "Remove image magick security policy for pdf"
+      lineinfile: dest=/etc/ImageMagick-6/policy.xml regexp='^(.*)<policy domain="coder" .* pattern="PDF" />' line='  <policy domain="coder" rights="read|write" pattern="PDF" />' state=present backup=yes
     - name: "Remove gnome games preinstalled"
       ansible.builtin.apt:
         name:
@@ -41,6 +45,9 @@
         - calibre
         - htop
         - neofetch
+        - keepass2
+        - gimp
+        - inkscape
         state: present
     - name: "Install programming utilities"
       ansible.builtin.apt:
@@ -57,11 +64,20 @@
         - ack
         - fd-find
         state: present
-    # This takes forever
-    # - name: "Install LaTeX and pandoc stuff"
-    #   ansible.builtin.apt:
-    #     name:
-    #     - texlive-full
-    #     - latexmk
-    #     - pandoc
-    #     state: present
+# This takes forever
+    - name: "Install LaTeX and pandoc stuff"
+      ansible.builtin.apt:
+        name:
+        - texlive-full
+        - latexmk
+        - pandoc
+        state: present
+# Install sway
+    - name: "Sway as a window manager"
+      ansible.builtin.apt:
+        name:
+        - sway
+        - swaylock
+        - rofi
+        - i3status
+        state: present
