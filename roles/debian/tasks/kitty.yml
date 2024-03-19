@@ -1,0 +1,23 @@
+---
+- name: "Install kitty"
+  ansible.builtin.apt:
+    name: kitty
+  become: true
+
+- name: "Create kitty config directory"
+  ansible.builtin.file: 
+    path: ~/.config/kitty
+    state: directory
+
+- name: "Kitty colorscheme"
+  ansible.builtin.copy:
+    src: kitty/doom_vibrant.conf
+    dest: ~/.config/kitty/doom_vibrant.conf
+    backup: true
+
+- name: "Configure kitty"
+  ansible.builtin.copy:
+    src: kitty/kitty.conf
+    dest: ~/.config/kitty/kitty.conf
+    backup: true
+

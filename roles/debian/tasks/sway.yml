@@ -1,0 +1,21 @@
+---
+- name: "Install sway"
+  ansible.builtin.apt:
+    name:
+    - sway
+    - swaylock
+    - rofi
+    - i3status
+  become: true
+
+- name: "Create sway config directory"
+  ansible.builtin.file: 
+    path: ~/.config/sway
+    state: directory
+
+- name: "Configure sway"
+  ansible.builtin.copy:
+    src: sway/config
+    dest: ~/.config/sway/config
+    backup: true
+

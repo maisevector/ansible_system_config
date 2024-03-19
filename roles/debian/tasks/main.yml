@@ -1,0 +1,3 @@
+---
+- import_tasks: sway.yml
+- import_tasks: kitty.yml
