@@ -4,3 +4,4 @@
 - import_tasks: git.yml
 - import_tasks: applications.yml
 - import_tasks: wallpapers.yml
+- import_tasks: vs_codium.yml
