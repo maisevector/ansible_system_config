@@ -2,3 +2,4 @@
 - import_tasks: sway.yml
 - import_tasks: kitty.yml
 - import_tasks: git.yml
+- import_tasks: applications.yml
