@@ -1,0 +1,22 @@
+---
+- name: "Install ranger"
+  ansible.builtin.apt:
+    name: ranger
+  become: true
+
+- name: "Create ranger config directory"
+  ansible.builtin.file: 
+    path: ~/.config/ranger
+    state: directory
+
+- name: "Configure ranger"
+  ansible.builtin.copy:
+    src: ranger/rc.conf
+    dest: ~/.config/ranger/rc.conf
+    backup: true
+
+- name: "Mimetypes"
+  ansible.builtin.copy:
+    src: ranger/mime.types
+    dest: ~/.mime.types
+    backup: true
