@@ -1,4 +1,6 @@
 ---
+- import_tasks: ytdl.yml
+- import_tasks: z.yml
 - import_tasks: bash.yml
 - import_tasks: inputrc.yml
 - import_tasks: systemd.yml

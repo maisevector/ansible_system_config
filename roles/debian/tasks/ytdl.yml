@@ -1,0 +1,15 @@
+---
+- name: "Create .venv directory for youtube-dl"
+  ansible.builtin.file:
+    path: ~/.venv/ytdl
+    state: directory
+
+- name: "Debug"
+  ansible.builtin.debug:
+    var: "(playbook_dir)"
+
+- name: "Create venv for ytdl"
+  ansible.builtin.pip:
+    requirements: "{{ playbook_dir }}/roles/debian/files/ytdl/requirements.txt"
+    virtualenv: ~/.venv/ytdl
+    virtualenv_command: /usr/bin/python3.11 -m venv

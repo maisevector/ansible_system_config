@@ -1,0 +1,15 @@
+---
+- name: "Create programs directory"
+  ansible.builtin.file: 
+    path: ~/programs
+    state: directory
+
+- name: "get z jump around"
+  ansible.builtin.get_url: 
+    url: "https://github.com/rupa/z/archive/refs/tags/v1.12.tar.gz"  
+    dest: ~/programs
+
+- name: "extract z"
+  ansible.builtin.unarchive:
+    src: ~/programs/z-1.12.tar.gz
+    dest: ~/programs
