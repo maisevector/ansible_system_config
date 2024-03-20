@@ -57,3 +57,19 @@
     - pandoc
     state: present
   become: true
+- name: "Remove image magick security policy for eps"
+  ansible.builtin.lineinfile: 
+    dest: /etc/ImageMagick-6/policy.xml 
+    regexp: '^(.*)<policy domain="coder" .* pattern="EPS" />' 
+    line: '  <policy domain="coder" rights="read|write" pattern="EPS" />' 
+    state: present 
+    backup: yes
+  become: true
+- name: "Remove image magick security policy for pdf"
+  ansible.builtin.lineinfile: 
+    dest: /etc/ImageMagick-6/policy.xml 
+    regexp: '^(.*)<policy domain="coder" .* pattern="PDF" />' 
+    line: '  <policy domain="coder" rights="read|write" pattern="PDF" />' 
+    state: present 
+    backup: yes
+  become: true
