@@ -1,0 +1,16 @@
+[user]
+    name = "Matthias Schaufelberger"
+    email = "schaufim@gmail.com"
+[init]
+    defaultBranch = main
+[commit]
+    verbose = true
+[alias]
+    lola = log --all --oneline --graph
+[push]
+    autoSetupRemote = true
+
+# Leave it commented for now
+; [submodule]
+; 	recurse = true
+

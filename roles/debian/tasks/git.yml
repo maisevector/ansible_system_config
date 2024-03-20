@@ -1,0 +1,11 @@
+---
+- name: "Install git"
+  ansible.builtin.apt:
+    name: git
+  become: true
+
+- name: "Configure git"
+  ansible.builtin.copy:
+    src: gitconfig
+    dest: ~/.gitconfig
+    backup: true
