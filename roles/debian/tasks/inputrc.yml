@@ -1,0 +1,7 @@
+---
+- name: "Configure inputrc"
+  ansible.builtin.copy:
+    src: inputrc
+    dest: ~/.config/.inputrc
+    backup: true
+

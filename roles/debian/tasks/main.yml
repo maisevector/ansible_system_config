@@ -1,4 +1,6 @@
 ---
+- import_tasks: bash.yml
+- import_tasks: inputrc.yml
 - import_tasks: systemd.yml
 - import_tasks: sway.yml
 - import_tasks: kitty.yml

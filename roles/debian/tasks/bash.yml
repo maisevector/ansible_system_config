@@ -1,0 +1,11 @@
+---
+- name: "Configure bash, most of which is the default debian bashrc"
+  ansible.builtin.copy:
+    src: bashrc
+    dest: ~/.bashrc
+    backup: true
+
+  ansible.builtin.copy:
+    src: bash_aliases
+    dest: ~/.bash_aliases
+    backup: true
