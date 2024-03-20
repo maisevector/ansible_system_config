@@ -1,0 +1,48 @@
+---
+- name: "Systemd stop job 90s time limit for shutdown"
+  ansible.builtin.lineinfile: 
+    dest: /etc/systemd/system.conf 
+    regexp: '^(.*)DefaultTimeoutStopSec(.*)' 
+    line: 'DefaultTimeoutStopSec=90s' 
+    state: present 
+    backup: yes
+
+- name: "Creates systemd user directory"
+  ansible.builtin.file:
+    path: ~/.config/systemd/user
+    state: directory
+
+- name: "Copy startup maintainer to systemd user directory"
+  ansible.builtin.copy:
+    src: systemd/startup_maintenance.service
+    dest: ~/.config/systemd/user
+
+- name: "Copy borg backup to systemd user directory"
+  ansible.builtin.copy:
+    src: systemd/borg_backup.service
+    dest: ~/.config/systemd/user
+
+- name: "Copy borg backup timer to systemd user directory"
+  ansible.builtin.copy:
+    src: systemd/borg_backup.timer
+    dest: ~/.config/systemd/user
+
+- name: "Systemd - enable borg backup timer"
+  ansible.builtin.systemd_service:
+    name: borg_backup.timer
+    enabled: true
+    masked: no
+    scope: user
+
+- name: "Systemd - enable systemd startup maintainer"
+  ansible.builtin.systemd_service:
+    name: startup_maintenance.service
+    enabled: true
+    masked: no
+    scope: user
+
+- name: "Systemd - start startup maintainer"
+  ansible.builtin.systemd_service:
+    name: startup_maintenance.service
+    state: started
+    scope: user
