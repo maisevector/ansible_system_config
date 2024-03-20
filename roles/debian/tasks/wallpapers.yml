@@ -1,0 +1,16 @@
+---
+- name: "Create wallpaper directory"
+  ansible.builtin.file: 
+    path: ~/Pictures/wallpapers
+    state: directory
+
+- name: "Copy wallpaper CentOS"
+  ansible.builtin.copy:
+    src: wallpapers/centos_wallpaper.jpg
+    dest: ~/Pictures/wallpapers/centos_wallpaper.jpg
+
+- name: "Copy wallpaper Fedora 33"
+  ansible.builtin.copy:
+    src: wallpapers/F33_wallpaper_dusk.jpg
+    dest: ~/Pictures/wallpapers/F33_wallpaper_dusk.jpg
+
