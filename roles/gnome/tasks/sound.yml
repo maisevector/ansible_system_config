@@ -1,0 +1,10 @@
+---
+- name: "Over amplification above 100%"
+  gsetting:
+    key: org.gnome.desktop.sound.allow-volume-above-100-percent
+    value: "true"
+
+- name: "Audible system bell"
+  gsetting:
+    key: org.gnome.desktop.wm.preferences.audible-bell
+    value: "false"

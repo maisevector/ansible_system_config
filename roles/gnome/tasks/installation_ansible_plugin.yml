@@ -1,0 +1,11 @@
+---
+- name: "Create ansible plugin directory"
+  ansible.builtin.file: 
+    path: ~/.ansible/plugins/modules
+    state: directory
+
+- name: "Install ansible gnome plugin"
+  ansible.builtin.get_url: 
+    url: "https://raw.githubusercontent.com/jistr/ansible-gsetting/master/gsetting.py"  
+    dest: ~/.ansible/plugins/modules/gsetting
+

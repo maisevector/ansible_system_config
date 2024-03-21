@@ -1,0 +1,7 @@
+---
+- import_tasks: installation_ansible_plugin.yml
+- import_tasks: interface.yml
+- import_tasks: keyboard.yml
+- import_tasks: nautilus.yml
+- import_tasks: sound.yml
+- import_tasks: taskbar.yml

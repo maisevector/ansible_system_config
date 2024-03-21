@@ -1,0 +1,35 @@
+---
+- name: "Turn off hot corners"
+  gsetting:
+    key: org.gnome.desktop.interface.enable-hot-corners
+    value: "false"
+
+- name: "Disable animations"
+  gsetting:
+    key: org.gnome.desktop.interface.enable-animations
+    value: "false"
+
+- name: "Battery percentage"
+  gsetting:
+    key: org.gnome.desktop.interface.show-battery-percentage
+    value: "true"
+
+- name: "Cursor blink"
+  gsetting:
+    key: org.gnome.desktop.interface.cursor-blink
+    value: "false"
+
+- name: "Do not disturb"
+  gsetting: 
+    key: org.gnome.desktop.notifications.show-banners 
+    value: "false"
+
+- name: "Clock format"
+  gsetting: 
+    key: org.gtk.Settings.FileChooser.clock-format
+    value: "24h"
+
+# - name: "Change locale for displaying numbers"
+#   gsetting:
+#     key: org.gnome.system.locale
+#     value: de_DE.UTF-8

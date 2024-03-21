@@ -1,0 +1,11 @@
+---
+- name: "nautilus use list view"
+  gsetting:
+    settings:
+      org.gnome.nautilus.preferences.default-folder-viewer: "'list-view'"
+
+- name: "nautilus list view columns"
+  gsetting:
+    settings:
+      org.gnome.nautilus.list-view.default-visible-columns: "['name', 'size', 'type', 'date_modified']"
+

@@ -1,0 +1,27 @@
+---
+- name: "Enable touchpad"
+  gsetting:
+    key: org.gnome.desktop.peripherals.touchpad.send-events
+    value: "enabled"
+
+- name: "Set touchpad scroll direction"
+  gsetting:
+    key: org.gnome.desktop.peripherals.touchpad.natural-scroll
+    value: "false"
+
+- name: "Set keyboard sources"
+  gsetting:
+    key: org.gnome.desktop.input-sources.sources
+    value: "[('xkb', 'us'), ('xkb', 'de+qwerty')]"
+
+- name: "Set keyboard options"
+  gsetting:
+    key: org.gnome.desktop.input-sources.xkb-options
+    value: "['caps:escape']"
+
+- name: "Set close windows shortcut"
+  gsetting:
+    key: org.gnome.desktop.wm.keybindings.close
+    value: "['<Alt>F4', '<Super><Shift>Q']"
+
+
