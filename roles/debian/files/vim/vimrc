@@ -1,0 +1,144 @@
+" Switch to plug since it is easily managable with ansible
+" Plugins {{{
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-speeddating'
+Plug 'junegunn/vim-easy-align'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'bkad/CamelCaseMotion'
+Plug 'preservim/nerdtree'
+Plug 'sjl/badwolf'
+Plug 'cocopon/iceberg.vim'
+Plug 'mbbill/undotree'
+call plug#end()
+" }}}
+
+let mapleader = '\'
+let maplocalleader = '\'
+set spelllang=en_us
+" set spell
+
+set belloff=all
+set formatoptions=qtcrwj
+set foldmethod=marker
+set number
+set showmatch
+set wrap
+set linebreak
+" set textwidth=78
+set hlsearch
+set incsearch
+set timeoutlen=1000
+set smartcase
+set gdefault
+set history=10000
+" set display+=lastline
+set autoindent
+set smarttab
+" set backspace=indent,eol,start
+set undofile
+set undodir=~/.vim/undodir//
+set directory^=~/.vim/swap//
+" Tabs
+set splitright
+set tabstop=4
+set shiftwidth=4
+set expandtab
+syntax on
+filetype plugin indent on
+
+" " Better whitespace plugin
+" let g:better_whitespace_enabled=1
+" let g:current_line_whitespace_disabled_soft=1
+
+nnoremap Q mqvipJVgq`q
+noremap <leader>d "+d
+noremap <leader>y "+y
+noremap <leader>c "+c
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+nnoremap <CR> :noh<CR>:match none<CR><c-l>
+noremap Y y$
+nnoremap j gj
+nnoremap k gk
+noremap L $
+noremap H 0
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ss :w %<cr>:source %<cr>
+inoremap jk <esc>
+cmap w!! :w !sudo tee > /dev/null %
+nnoremap mm m
+
+" Plugin settings -----{{{
+" Ctrl P
+" let g:ctrlp_map = '<C-p>'
+" let g:ctrlp_cmd = 'CtrlP .'
+nnoremap <F9> :UndotreeToggle<cr>
+let g:camelcasemotion_key = 'm'
+" Easy Align
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+let g:airline_symbols_ascii = 1
+" Surround vim bugfixes:
+nmap ysa' ys2i'
+nmap ysa" ys2i"
+nmap ysa` ys2i`
+map <F3> :NERDTreeToggle<CR>
+" }}}
+
+autocmd BufNewFile *.sh 0r ~/.vim/skeleton/skeleton.sh
+" de file settings -----{{{
+"augroup filetype_de_
+"	autocmd!
+"	"autocmd FileType de.txt setlocal foldmethod=marker
+"    autocmd BufEnter *.de.* :call KeymapMapper_utils#SetKeymapGerman()
+"    autocmd BufWrite *.de.* :call KeymapMapper_utils#SetKeymapGerman()
+"augroup end
+"" }}}
+silent! :helptags ALL
+
+" Issues with kitty, which will otherwise overwrite terminal colors
+let &t_ut=''
+set background=dark
+
+" With most default terminal colors are the spell local words hardly visible
+highlight SpellLocal ctermbg=8
+
+" For error suppression
+silent! colorscheme badwolf
+" Use terminal colors for hopefully better rendering
+" set termguicolors
+
+" {{{ Might be removed in the future
+inoremap <c-w> <nop>
+nnoremap <leader>o yyP:s/(.*)/("\0")<cr>:nohl<cr>
+nnoremap <leader>Q :ccl<cr>:lcl<cr>:lcl<cr>:pcl<cr>
+nnoremap <leader>w mq:<c-u>silent! execute ':%s/\v\s+\n/\r/g'<cr>`q:noh<CR>:match none<CR>
+nnoremap <leader>. :<c-u>execute ':s/\v(\w)\.(\w)/\1. \2/gg'<cr>:noh<cr>
+nnoremap <leader><c-]> f=w<c-]>
+
+" " Text objects
+" " Comma
+" vnoremap a, :<c-u>silent! normal! T.vf.<cr>
+" omap a, :normal va,<cr>
+" vnoremap i, :<c-u>silent! normal! T.vt.<cr>
+" omap i, :normal vi,<cr>
+" " Point
+" vnoremap a. :<c-u>silent! normal! T.vf.<cr>
+" omap a. :normal va.<cr>
+" vnoremap i. :<c-u>silent! normal! T.vt.<cr>
+" omap i. :normal vi.<cr>
+
+" vim-signify
+" set updatetime=100
+
+" nnoremap <leader>kmde :call KeymapMapper_utils#SetKeymapGerman()<CR>
+" nnoremap <leader>kmus :call KeymapMapper_utils#SetKeymapEnglish()<CR>
+" }}}

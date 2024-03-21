@@ -1,0 +1,62 @@
+---
+- name: "Install vim"
+  ansible.builtin.apt:
+    name: vim-gtk3
+  become: true
+
+- name: "Create after ftplugin directory"
+  ansible.builtin.file: 
+    path: ~/.vim/after/ftplugin
+    state: directory
+
+- name: "Copy tex filetype settings"
+  ansible.builtin.copy:
+    src: vim/after/ftplugin/tex.vim
+    dest: ~/.vim/after/ftplugin/tex.vim
+    backup: true
+
+- name: "Copy markdown filetype settings"
+  ansible.builtin.copy:
+    src: vim/after/ftplugin/markdown.vim
+    dest: ~/.vim/after/ftplugin/markdown.vim
+    backup: true
+
+- name: "Create skeleton directory"
+  ansible.builtin.file: 
+    path: ~/.vim/skeleton
+    state: directory
+
+- name: "Copy shell skeleton"
+  ansible.builtin.copy:
+    src: vim/skeleton/skeleton.sh
+    dest: ~/.vim/skeleton/skeleton.sh
+    backup: true
+
+- name: "Create swap directory"
+  ansible.builtin.file: 
+    path: ~/.vim/swap
+    state: directory
+
+- name: "Create undodir directory"
+  ansible.builtin.file: 
+    path: ~/.vim/undodir
+    state: directory
+
+- name: "Create autoload directory for vim-plug"
+  ansible.builtin.file:
+    dest: ~/.vim/autoload
+    state: directory
+
+- name: "Configure vim"
+  ansible.builtin.copy:
+    src: vim/vimrc
+    dest: ~/.vim/vimrc
+    backup: true
+
+- name: "Install vim-plug"
+  ansible.builtin.get_url:
+    url: "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    dest: ~/.vim/autoload/plug.vim
+
+- name: "Install and vim plugins"
+  command: "/usr/bin/vim +PlugUpdate +qall!" # From github, "+" means command

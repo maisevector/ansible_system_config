@@ -1,4 +1,5 @@
 ---
+- import_tasks: vim.yml
 - import_tasks: ytdl.yml
 - import_tasks: z.yml
 - import_tasks: bash.yml
