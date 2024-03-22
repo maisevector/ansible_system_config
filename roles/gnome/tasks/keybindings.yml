@@ -1,0 +1,41 @@
+- name: "Firefox"
+  gsetting:
+    schema: org.gnome.settings-daemon.plugins.media-keys.custom-keybinding
+    path: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0firefox/
+    settings:
+      name: "Browser"
+      binding: '<Super>F2'
+      command: 'firefox'
+
+- name: "Ranger"
+  gsetting:
+    schema: org.gnome.settings-daemon.plugins.media-keys.custom-keybinding
+    path: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0ranger/
+    settings:
+      name: "Ranger"
+      binding: "<Super>F3"
+      command: "kitty --start-as maximized -e ranger"
+
+- name: "Gnome terminal"
+  gsetting:
+    schema: org.gnome.settings-daemon.plugins.media-keys.custom-keybinding
+    path: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0terminal/
+    settings:
+      name: "Terminal"
+      binding: "<Control><Alt>T"
+      command: "gnome-terminal"
+
+- name: "Kitty"
+  gsetting:
+    schema: org.gnome.settings-daemon.plugins.media-keys.custom-keybinding
+    path: /org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0kitty/
+    settings:
+      name: "Kitty"
+      binding: "<Super>Return"
+      command: "kitty --start-as maximized"
+
+- name: "Set custom keybinding"
+  gsetting:
+    schema: org.gnome.settings-daemon.plugins.media-keys
+    key: custom-keybindings
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0firefox/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0ranger/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0terminal/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0kitty/']"
