@@ -16,6 +16,9 @@ Plug 'preservim/nerdtree'
 Plug 'sjl/badwolf'
 Plug 'cocopon/iceberg.vim'
 Plug 'mbbill/undotree'
+Plug 'dense-analysis/ale'
+Plug 'airblade/vim-gitgutter'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 " }}}
 

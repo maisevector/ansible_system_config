@@ -115,6 +115,7 @@ fi
 EDITOR=/usr/bin/vim
 export EDITOR
 export VISUAL=$EDITOR
+export XDG_DATA_HOME=~/.local/share
 . ~/programs/z-1.12/z.sh
 
 # Disable XON flow control freezing the terminal

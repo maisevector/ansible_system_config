@@ -1,7 +1,7 @@
 ---
-- import_tasks: vim.yml
-- import_tasks: ytdl.yml
 - import_tasks: z.yml
+- import_tasks: replace-to-umlauts.yml
+- import_tasks: vim.yml
 - import_tasks: bash.yml
 - import_tasks: inputrc.yml
 - import_tasks: systemd.yml
@@ -12,3 +12,4 @@
 - import_tasks: wallpapers.yml
 - import_tasks: vs_codium.yml
 - import_tasks: ranger.yml
+- import_tasks: ytdl.yml

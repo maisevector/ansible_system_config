@@ -2,59 +2,69 @@
 - name: "Remove gnome games preinstalled"
   ansible.builtin.apt:
     name:
+    - aislerio
+    - four-in-a-row
+    - gnome-2048
+    - gnome-klotski
+    - gnome-mahjongg
+    - gnome-mines
+    - gnome-robots
+    - gnome-sudoku
+    - gnome-taquin
+    - gnome-tetravex
+    - hitori
     - iagno
     - lightsoff
-    - four-in-a-row
-    - gnome-robots
     - pegsolitaire
-    - gnome-2048
-    - hitori
-    - gnome-klotski
-    - gnome-mines
-    - gnome-mahjongg
-    - gnome-sudoku
     - quadrapassel
     - swell-foop
-    - gnome-tetravex
-    - gnome-taquin
-    - aislerio
     state: absent
   become: true
 - name: "Install general utilities"
   ansible.builtin.apt:
     name:
-    - vlc
-    - flatpak
-    - gnome-software-plugin-flatpak
-    - epiphany-browser
-    - dosfstools
-    - mtools
-    - gparted
-    - deborphan
-    - pdftk
     - borgbackup
-    - foliate
     - calibre
-    - htop
-    - neofetch
-    - keepass2
+    - deborphan
+    - dosfstools
+    - epiphany-browser
+    - flatpak
+    - foliate
     - gimp
+    - gnome-software-plugin-flatpak
+    - gparted
+    - htop
     - inkscape
+    - keepass2
+    - mtools
+    - neofetch
+    - pdftk
+    - vlc
+    state: present
+  become: true
+- name: "Extensions"
+  ansible.builtin.apt:
+    name:
+    - gnome-shell-extensions
+    - gnome-shell-extensions-gsconnect
     state: present
   become: true
 - name: "Install programming utilities"
   ansible.builtin.apt:
     name:
+    - ack
     - dconf-editor
     - emacs
-    - python-is-python3
-    - python3-pip
-    - python3.11-venv
-    - ack
     - fd-find
-    - texlive-full
     - latexmk
     - pandoc
+    - pylint
+    - python3.11-venv
+    - python3-pip
+    - python-is-python3
+    - rsync
+    - shellcheck
+    - texlive-full
     state: present
   become: true
 - name: "Remove image magick security policy for eps"
