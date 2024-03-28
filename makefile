@@ -1,10 +1,9 @@
-.PHONY: debian gnome all 
+.PHONY: debian noroot
 
-all: debian gnome
+all: debian
 
 debian: site.yml
 	ansible-playbook --ask-become-pass $<
 
-gnome: site.yml
+noroot: site.yml
 	ansible-playbook $<
-

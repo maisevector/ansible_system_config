@@ -1,7 +1,20 @@
 ---
-- hosts: localhost
+- name: "Gnome config"
+  hosts: localhost
+  connection: local
+  roles:
+    - gnome
+
+- name: "Scripts config"
+  hosts: localhost
+  connection: local
+  roles:
+    - scripts
+
+- name: "Debian config"
+  hosts: localhost
   connection: local
   # gather_facts: false
   roles:
     - debian
-    # - gnome
+
