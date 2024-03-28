@@ -1,0 +1,15 @@
+---
+- name: "Create bin directory"
+  ansible.builtin.file:
+    path: ~/scripts
+    state: directory
+
+- name: "mp3 deleter"
+  ansible.builtin.copy:
+    src: delete_mp3_if_ogg_exists.sh
+    dest: ~/scripts
+
+- name: "Startup maintainer"
+  ansible.builtin.copy:
+    src: startup-maintainer.sh
+    dest: ~/scripts
