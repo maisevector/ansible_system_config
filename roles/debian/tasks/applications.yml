@@ -55,6 +55,7 @@
     - ack
     - dconf-editor
     - emacs
+    - exuberant-ctags
     - fd-find
     - latexmk
     - pandoc

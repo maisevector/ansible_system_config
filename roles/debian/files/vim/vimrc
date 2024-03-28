@@ -27,8 +27,9 @@ let maplocalleader = '\'
 set spelllang=en_us
 " set spell
 
+set showcmd
 set belloff=all
-set formatoptions=qtcrwj
+set formatoptions=qtcrj
 set foldmethod=marker
 set number
 set showmatch
@@ -95,6 +96,9 @@ nmap ysa" ys2i"
 nmap ysa` ys2i`
 map <F3> :NERDTreeToggle<CR>
 " }}}
+
+" Whitespace:
+set list listchars=tab:»·,trail:·
 
 autocmd BufNewFile *.sh 0r ~/.vim/skeleton/skeleton.sh
 " de file settings -----{{{
