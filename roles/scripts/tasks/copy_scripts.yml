@@ -1,5 +1,5 @@
 ---
-- name: "Create bin directory"
+- name: "Create scripts directory"
   ansible.builtin.file:
     path: ~/scripts
     state: directory

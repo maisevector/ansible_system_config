@@ -46,13 +46,13 @@
   ansible.builtin.apt:
     name:
     - gnome-shell-extensions
-    - gnome-shell-extensions-gsconnect
     state: present
   become: true
 - name: "Install programming utilities"
   ansible.builtin.apt:
     name:
     - ack
+    - bash-completion
     - dconf-editor
     - emacs
     - exuberant-ctags

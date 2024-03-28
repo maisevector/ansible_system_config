@@ -1,0 +1,20 @@
+---
+- name: "Create bin directory"
+  ansible.builtin.file: 
+    path: ~/bin
+    state: directory
+
+- name: "get replace-to-umlauts"
+  ansible.builtin.get_url: 
+    url: "https://github.com/maisevector/replace-to-umlauts/archive/refs/heads/main.tar.gz"
+    dest: ~/programs
+
+- name: "Extract replace-to-umlauts"
+  ansible.builtin.unarchive:
+    src: ~/programs/replace-to-umlauts-main.tar.gz
+    dest: ~/programs
+
+- name: "Run installer"
+  ansible.builtin.shell: 
+    chdir: ~/programs/replace-to-umlauts-main
+    cmd: ~/programs/replace-to-umlauts-main/install.sh
