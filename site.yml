@@ -3,18 +3,21 @@
   hosts: localhost
   connection: local
   roles:
-    - gnome
+    - role: gnome
+      tags: gnome_tag
 
 - name: "Scripts config"
   hosts: localhost
   connection: local
   roles:
-    - scripts
+    - role: scripts
+      tags: config_tag
 
 - name: "Debian config"
   hosts: localhost
   connection: local
   # gather_facts: false
   roles:
-    - debian
+    - role: debian
+      tags: debian_tag
 
