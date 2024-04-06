@@ -1,0 +1,28 @@
+---
+- name: "Install community general flatpak modules from galaxy"
+  ansible.builtin.shell:
+    cmd: ansible-galaxy collection install community.general
+
+- name: "Install flatpak with backend"
+  ansible.builtin.apt:
+    name:
+    - flatpak
+    - gnome-software-plugin-flatpak
+    state: present
+  become: true
+
+- name: "Add flathub remote to user"
+  community.general.flatpak_remote:
+    name: "flathub"
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: "Install general flatpak applications"
+  community.general.flatpak:
+    name: 
+    - com.discordapp.Discord
+    - com.spotify.Client
+    - org.telegram.desktop
+    state: present
+    method: user

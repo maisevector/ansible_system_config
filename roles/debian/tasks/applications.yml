@@ -20,6 +20,7 @@
     - swell-foop
     state: absent
   become: true
+
 - name: "Install general utilities"
   ansible.builtin.apt:
     name:
@@ -42,12 +43,14 @@
     - vlc
     state: present
   become: true
+
 - name: "Extensions"
   ansible.builtin.apt:
     name:
     - gnome-shell-extensions
     state: present
   become: true
+
 - name: "Install programming utilities"
   ansible.builtin.apt:
     name:
@@ -68,6 +71,16 @@
     - texlive-full
     state: present
   become: true
+
+- name: "Add contrib repository for multimedia encryption codecs"
+  ansible.builtin.shell:
+    cmd: apt-add-repository contrib
+  become: true
+
+- name: "Print information about reconfiguring"
+  ansible.builtin.debug:
+    msg: "For multimedia codects, you might need to do perform the following action: sudo dpkg-reconfigure libdvd-pkg"
+
 - name: "Remove image magick security policy for eps"
   ansible.builtin.lineinfile: 
     dest: /etc/ImageMagick-6/policy.xml 
@@ -76,6 +89,7 @@
     state: present 
     backup: yes
   become: true
+
 - name: "Remove image magick security policy for pdf"
   ansible.builtin.lineinfile: 
     dest: /etc/ImageMagick-6/policy.xml 
