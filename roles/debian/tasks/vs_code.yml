@@ -1,0 +1,30 @@
+---
+- name: "VSCode: Get Microsoft GPG key"
+  ansible.builtin.shell:
+    cmd: curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+
+- name: "VSCode: Copy key to apt directory"
+  ansible.builtin.shell:
+    cmd: install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
+  become: true
+
+- name: "VSCode: Add key ring to apt sources"
+  ansible.builtin.shell:
+    cmd: sh -c 'echo "deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+  become: true
+
+- name: "Install VS Code"
+  ansible.builtin.apt: 
+    name: code
+  become: true
+
+- name: "Create config directory"
+  ansible.builtin.file:
+    path: ~/.config/Code/User
+    state: directory
+
+- name: "Configure VS Codium"
+  ansible.builtin.copy:
+    src: vs_code/settings.json
+    dest: ~/.config/Code/User/settings.json
+    backup: true

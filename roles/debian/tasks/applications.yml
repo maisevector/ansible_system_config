@@ -72,29 +72,34 @@
     state: present
   become: true
 
-- name: "Add contrib repository for multimedia encryption codecs"
-  ansible.builtin.shell:
-    cmd: apt-add-repository contrib
-  become: true
+# - name: "Add contrib repository for multimedia encryption codecs"
+#   ansible.builtin.shell:
+#     cmd: apt-add-repository contrib
+#   become: true
 
 - name: "Print information about reconfiguring"
   ansible.builtin.debug:
-    msg: "For multimedia codects, you might need to do perform the following action: sudo dpkg-reconfigure libdvd-pkg"
+    msg:
+      - "For multimedia codecs, you might need to do perform the following actions, I believe it was:"
+      - "sudo apt-add-repository contrib"
+      - "sudo apt install libavcodec-extra"
+      - "sudo dpkg-reconfigure libdvd-pkg"
+      - "This takes forever here and the reconfiguring is not really automated, so we skip it here"
 
 - name: "Remove image magick security policy for eps"
-  ansible.builtin.lineinfile: 
-    dest: /etc/ImageMagick-6/policy.xml 
-    regexp: '^(.*)<policy domain="coder" .* pattern="EPS" />' 
-    line: '  <policy domain="coder" rights="read|write" pattern="EPS" />' 
-    state: present 
+  ansible.builtin.lineinfile:
+    dest: /etc/ImageMagick-6/policy.xml
+    regexp: '^(.*)<policy domain="coder" .* pattern="EPS" />'
+    line: '  <policy domain="coder" rights="read|write" pattern="EPS" />'
+    state: present
     backup: yes
   become: true
 
 - name: "Remove image magick security policy for pdf"
-  ansible.builtin.lineinfile: 
-    dest: /etc/ImageMagick-6/policy.xml 
-    regexp: '^(.*)<policy domain="coder" .* pattern="PDF" />' 
-    line: '  <policy domain="coder" rights="read|write" pattern="PDF" />' 
-    state: present 
+  ansible.builtin.lineinfile:
+    dest: /etc/ImageMagick-6/policy.xml
+    regexp: '^(.*)<policy domain="coder" .* pattern="PDF" />'
+    line: '  <policy domain="coder" rights="read|write" pattern="PDF" />'
+    state: present
     backup: yes
   become: true

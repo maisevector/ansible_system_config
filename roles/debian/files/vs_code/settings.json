@@ -1,0 +1,40 @@
+{
+    "_comment": "This file is modified in ansible, json does not allow copies",
+    "workbench.colorTheme": "Default Dark Modern",
+    "cmake.configureOnOpen": true,
+    "editor.cursorBlinking": "solid",
+    "keyboard.dispatch": "keyCode",
+    "vim.camelCaseMotion.enable": true,
+    "vim.history": 10000,
+    "vim.gdefault": true,
+    "vim.operatorPendingModeKeyBindings": [
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {
+            "before": ["H"],
+            "after": ["^"]
+        }
+    ]
+}
