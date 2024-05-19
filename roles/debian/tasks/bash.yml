@@ -5,6 +5,7 @@
     dest: ~/.bashrc
     state: link
 
+- name: "Configuring bash aliases"
   ansible.builtin.file:
     src: "{{playbook_dir}}/roles/debian/files/bash_aliases"
     dest: ~/.bash_aliases
