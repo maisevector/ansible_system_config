@@ -1,11 +1,18 @@
 ---
+- name: "Create .tmp_ansible directory"
+  ansible.builtin.file:
+    path: ~/.tmp_ansible
+    state: directory
+  become: true
+
 - name: "VSCode: Get Microsoft GPG key"
   ansible.builtin.shell:
-    cmd: curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+    cmd: curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > ~/.tmp_ansible/microsoft.gpg
+  become: true
 
 - name: "VSCode: Copy key to apt directory"
   ansible.builtin.shell:
-    cmd: install -o root -g root -m 644 microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
+    cmd: install -o root -g root -m 644 ~/.tmp_ansible/microsoft.gpg /etc/apt/keyrings/microsoft-archive-keyring.gpg
   become: true
 
 - name: "VSCode: Add key ring to apt sources"
