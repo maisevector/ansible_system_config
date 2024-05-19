@@ -14,8 +14,8 @@
     state: directory
 
 - name: "Configure sway"
-  ansible.builtin.copy:
-    src: sway/config
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/sway/config"
     dest: ~/.config/sway/config
-    backup: true
+    state: link
 

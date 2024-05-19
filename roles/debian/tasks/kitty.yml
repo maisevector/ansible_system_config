@@ -11,12 +11,12 @@
 
 - name: "Kitty colorscheme"
   ansible.builtin.copy:
-    src: kitty/doom_vibrant.conf
+    src: "{{playbook_dir}}/roles/debian/files/kitty/doom_vibrant.conf"
     dest: ~/.config/kitty/doom_vibrant.conf
 
 - name: "Configure kitty"
-  ansible.builtin.copy:
-    src: kitty/kitty.conf
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/kitty/kitty.conf"
     dest: ~/.config/kitty/kitty.conf
-    backup: true
+    state: link
 

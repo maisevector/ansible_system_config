@@ -1,7 +1,7 @@
 ---
 - name: "Configure inputrc"
-  ansible.builtin.copy:
-    src: inputrc
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/inputrc"
     dest: ~/.config/.inputrc
-    backup: true
+    state: link
 

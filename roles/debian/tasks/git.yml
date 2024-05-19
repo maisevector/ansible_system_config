@@ -5,7 +5,7 @@
   become: true
 
 - name: "Configure git"
-  ansible.builtin.copy:
-    src: gitconfig
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/gitconfig"
     dest: ~/.gitconfig
-    backup: true
+    state: link

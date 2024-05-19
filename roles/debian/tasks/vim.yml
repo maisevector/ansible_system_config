@@ -10,16 +10,16 @@
     state: directory
 
 - name: "Copy tex filetype settings"
-  ansible.builtin.copy:
-    src: vim/after/ftplugin/tex.vim
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/vim/after/ftplugin/tex.vim"
     dest: ~/.vim/after/ftplugin/tex.vim
-    backup: true
+    state: link
 
 - name: "Copy markdown filetype settings"
-  ansible.builtin.copy:
-    src: vim/after/ftplugin/markdown.vim
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/vim/after/ftplugin/markdown.vim"
     dest: ~/.vim/after/ftplugin/markdown.vim
-    backup: true
+    state: link
 
 - name: "Create skeleton directory"
   ansible.builtin.file: 
@@ -27,10 +27,10 @@
     state: directory
 
 - name: "Copy shell skeleton"
-  ansible.builtin.copy:
-    src: vim/skeleton/skeleton.sh
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/vim/skeleton/skeleton.sh"
     dest: ~/.vim/skeleton/skeleton.sh
-    backup: true
+    state: link
 
 - name: "Create swap directory"
   ansible.builtin.file: 
@@ -48,10 +48,10 @@
     state: directory
 
 - name: "Configure vim"
-  ansible.builtin.copy:
-    src: vim/vimrc
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/vim/vimrc"
     dest: ~/.vim/vimrc
-    backup: true
+    state: link
 
 - name: "Install vim-plug"
   ansible.builtin.get_url:

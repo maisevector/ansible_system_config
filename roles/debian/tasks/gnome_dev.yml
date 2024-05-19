@@ -1,0 +1,18 @@
+---
+task: "Install dependencies for older gnome calendar versions"
+  ansible.builtin.apt:
+    name:
+    - libsoup2.4-dev
+    state: present
+  become: true
+
+task: "Install dependencies for libsoup"
+  ansible.builtin.apt:
+    name:
+    - meson
+    - cmake
+    - libglib2.0-dev
+    - libnghttp2
+    - libsqlite3-dev
+    state: present
+  become: true

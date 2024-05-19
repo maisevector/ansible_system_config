@@ -14,7 +14,7 @@
   become: true
 
 - name: "Install VS Code"
-  ansible.builtin.apt: 
+  ansible.builtin.apt:
     name: code
   become: true
 
@@ -24,7 +24,7 @@
     state: directory
 
 - name: "Configure VS Codium"
-  ansible.builtin.copy:
-    src: vs_code/settings.json
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/vs_code/settings.json"
     dest: ~/.config/Code/User/settings.json
-    backup: true
+    state: link

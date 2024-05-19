@@ -1,11 +1,11 @@
 ---
 - name: "Configure bash, most of which is the default debian bashrc"
-  ansible.builtin.copy:
-    src: bashrc
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/bashrc"
     dest: ~/.bashrc
-    backup: true
+    state: link
 
-  ansible.builtin.copy:
-    src: bash_aliases
+  ansible.builtin.file:
+    src: "{{playbook_dir}}/roles/debian/files/bash_aliases"
     dest: ~/.bash_aliases
-    backup: true
+    state: link
