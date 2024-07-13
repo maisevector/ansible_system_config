@@ -1,6 +1,10 @@
-# Ansible Playbook for debian
+# Personal debian playbook
 
-This playbook will take care of the usual configuration.
+This playbook configures my personal computer with the usual suspects.
 
-Most of the configuration will be managed as files which are copied to the 
-default config locations.
+There is also a substantial part of configuring both the `gnome` desktop
+environment and the `sway` window manager.
+
+The configuration files will be linked to their locations, so this playbook not
+only takes care of installing system packages, but also acts as a dotfile
+manager.
