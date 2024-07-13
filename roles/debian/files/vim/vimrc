@@ -19,6 +19,7 @@ Plug 'mbbill/undotree'
 Plug 'dense-analysis/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'ntpeters/vim-better-whitespace'
 call plug#end()
 " }}}
 
@@ -58,8 +59,8 @@ syntax on
 filetype plugin indent on
 
 " " Better whitespace plugin
-" let g:better_whitespace_enabled=1
-" let g:current_line_whitespace_disabled_soft=1
+let g:better_whitespace_enabled=1
+let g:current_line_whitespace_disabled_soft=1
 
 nnoremap Q mqvipJVgq`q
 noremap <leader>d "+d

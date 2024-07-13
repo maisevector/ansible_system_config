@@ -36,5 +36,12 @@
             "before": ["H"],
             "after": ["^"]
         }
-    ]
+    ],
+    "vim.insertModeKeyBindings": [
+    {
+      "before": ["j","k"],
+      "after": ["<Esc>"]
+    }],
+    "cmake.showOptionsMovedNotification": false,
+    "window.zoomLevel": -1
 }

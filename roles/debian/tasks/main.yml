@@ -14,3 +14,4 @@
 - import_tasks: vs_code.yml
 - import_tasks: ranger.yml
 - import_tasks: ytdl.yml
+- import_tasks: time.yml
